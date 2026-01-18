@@ -1,0 +1,142 @@
+finance-app
+│
+├── pom.xml
+├── README.md
+│
+└── src
+    └── main
+        ├── java
+        │   └── com
+        │       └── financeapp
+        │
+        │           ├── FinanceApplication.java
+        │
+        │           ├── domain
+        │           │   ├── model
+        │           │   │   ├── user
+        │           │   │   │   ├── User.java
+        │           │   │   │   ├── Role.java
+        │           │   │   │   └── AuthProvider.java
+        │           │   │   │
+        │           │   │   ├── finance
+        │           │   │   │   ├── Income.java
+        │           │   │   │   ├── Expense.java
+        │           │   │   │   ├── FixedExpense.java
+        │           │   │   │   └── FinancialSnapshot.java
+        │           │   │   │
+        │           │   │   └── token
+        │           │   │       └── EmailVerificationToken.java
+        │           │   │
+        │           │   ├── port
+        │           │   │   ├── in
+        │           │   │   │   ├── user
+        │           │   │   │   │   ├── RegisterUserUseCase.java
+        │           │   │   │   │   ├── LoginUserUseCase.java
+        │           │   │   │   │   └── ConfirmUserUseCase.java
+        │           │   │   │   │
+        │           │   │   │   ├── finance
+        │           │   │   │   │   ├── AddIncomeUseCase.java
+        │           │   │   │   │   ├── AddExpenseUseCase.java
+        │           │   │   │   │   ├── AddFixedExpenseUseCase.java
+        │           │   │   │   │   ├── GetCurrentBalanceUseCase.java
+        │           │   │   │   │   └── GetFinancialAnalysisUseCase.java
+        │           │   │   │
+        │           │   │   └── out
+        │           │   │       ├── UserRepositoryPort.java
+        │           │   │       ├── IncomeRepositoryPort.java
+        │           │   │       ├── ExpenseRepositoryPort.java
+        │           │   │       ├── FixedExpenseRepositoryPort.java
+        │           │   │       ├── VerificationTokenRepositoryPort.java
+        │           │   │       └── EmailSenderPort.java
+        │           │   │
+        │           │   └── service
+        │           │       ├── FinancialAnalysisService.java
+        │           │       └── PasswordEncryptionService.java
+        │
+        │           ├── application
+        │           │   ├── usecase
+        │           │   │   ├── user
+        │           │   │   │   ├── RegisterUserService.java
+        │           │   │   │   ├── LoginUserService.java
+        │           │   │   │   └── ConfirmUserService.java
+        │           │   │   │
+        │           │   │   └── finance
+        │           │   │       ├── AddIncomeService.java
+        │           │   │       ├── AddExpenseService.java
+        │           │   │       ├── AddFixedExpenseService.java
+        │           │   │       ├── GetCurrentBalanceService.java
+        │           │   │       └── GetFinancialAnalysisService.java
+        │           │   │
+        │           │   └── dto
+        │           │       ├── user
+        │           │       │   ├── RegisterUserRequest.java
+        │           │       │   ├── LoginRequest.java
+        │           │       │   └── AuthResponse.java
+        │           │       │
+        │           │       └── finance
+        │           │           ├── IncomeRequest.java
+        │           │           ├── ExpenseRequest.java
+        │           │           ├── FixedExpenseRequest.java
+        │           │           └── FinancialAnalysisResponse.java
+        │
+        │           ├── infrastructure
+        │           │   ├── persistence
+        │           │   │   ├── entity
+        │           │   │   │   ├── UserEntity.java
+        │           │   │   │   ├── RoleEntity.java
+        │           │   │   │   ├── IncomeEntity.java
+        │           │   │   │   ├── ExpenseEntity.java
+        │           │   │   │   ├── FixedExpenseEntity.java
+        │           │   │   │   └── VerificationTokenEntity.java
+        │           │   │   │
+        │           │   │   ├── repository
+        │           │   │   │   ├── UserJpaRepository.java
+        │           │   │   │   ├── IncomeJpaRepository.java
+        │           │   │   │   ├── ExpenseJpaRepository.java
+        │           │   │   │   ├── FixedExpenseJpaRepository.java
+        │           │   │   │   └── VerificationTokenJpaRepository.java
+        │           │   │   │
+        │           │   │   └── adapter
+        │           │   │       ├── UserRepositoryAdapter.java
+        │           │   │       ├── IncomeRepositoryAdapter.java
+        │           │   │       ├── ExpenseRepositoryAdapter.java
+        │           │   │       ├── FixedExpenseRepositoryAdapter.java
+        │           │   │       └── VerificationTokenRepositoryAdapter.java
+        │           │   │
+        │           │   ├── security
+        │           │   │   ├── jwt
+        │           │   │   │   ├── JwtProvider.java
+        │           │   │   │   ├── JwtAuthenticationFilter.java
+        │           │   │   │   └── JwtAuthenticationEntryPoint.java
+        │           │   │   │
+        │           │   │   ├── oauth
+        │           │   │   │   ├── OAuth2UserServiceImpl.java
+        │           │   │   │   └── OAuth2SuccessHandler.java
+        │           │   │   │
+        │           │   │   ├── UserDetailsServiceImpl.java
+        │           │   │   └── SecurityConfig.java
+        │           │   │
+        │           │   ├── email
+        │           │   │   └── EmailSenderAdapter.java
+        │           │   │
+        │           │   └── config
+        │           │       └── ApplicationConfig.java
+        │
+        │           └── api
+        │               ├── controller
+        │               │   ├── AuthController.java
+        │               │   ├── UserController.java
+        │               │   ├── IncomeController.java
+        │               │   ├── ExpenseController.java
+        │               │   ├── FixedExpenseController.java
+        │               │   └── FinancialAnalysisController.java
+        │               │
+        │               └── exception
+        │                   ├── GlobalExceptionHandler.java
+        │                   └── ErrorResponse.java
+        │
+        └── resources
+            ├── application.yml
+            └── db
+                └── migration
+                    └── V1__init.sql
